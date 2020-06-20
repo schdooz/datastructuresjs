@@ -1,4 +1,4 @@
-function circularBuffer(maxSize) {
+module.exports = function circularBuffer(maxSize) {
     if (!maxSize || typeof maxSize !== 'number' || Math.floor(maxSize) !== maxSize || maxSize < 1 ) {
         throw new Error('maxSize must be a positive integer');
     }
