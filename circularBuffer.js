@@ -3,7 +3,6 @@ function circularBuffer(maxSize) {
         throw new Error('maxSize must be a positive integer');
     }
 
-    let maxSize = maxSize;
     let buffer = [];
     let startIndex = 0;
     let endIndex = 0;
@@ -17,10 +16,6 @@ function circularBuffer(maxSize) {
                 startIndex++
             }
 
-            if (endIndex === startIndex) {
-                isFull = true;
-            }
-
             if (startIndex === maxSize) {
                 startIndex = 0;
             }
@@ -28,9 +23,13 @@ function circularBuffer(maxSize) {
             if (endIndex === maxSize) {
                 endIndex = 0;
             }
+
+            if (endIndex === startIndex) {
+                isFull = true;
+            }
         },
         Pop() {
-            const item;
+            let item;
 
             if (startIndex === endIndex && !isFull) {
                 throw new Error('Attempted to pop an empty buffer');
