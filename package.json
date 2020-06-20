@@ -1,0 +1,13 @@
+{
+  "name": "datastructures",
+  "version": "1.0.0",
+  "description": "Data structure implementations in JS",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "author": "Mark Dinh",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^5.0.1"
+  }
+}
