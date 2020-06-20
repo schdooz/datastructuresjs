@@ -4,46 +4,46 @@ function circularBuffer(maxSize) {
     }
 
     let buffer = [];
-    let startIndex = 0;
-    let endIndex = 0;
+    let readIndex = 0;
+    let writeIndex = 0;
     let isFull = false;
 
     return ({
         Push(item) {
-            buffer[endIndex++] = item;
+            buffer[writeIndex++] = item;
 
             if (isFull) {
-                startIndex++
+                readIndex++
             }
 
-            if (startIndex === maxSize) {
-                startIndex = 0;
+            if (readIndex === maxSize) {
+                readIndex = 0;
             }
 
-            if (endIndex === maxSize) {
-                endIndex = 0;
+            if (writeIndex === maxSize) {
+                writeIndex = 0;
             }
 
-            if (endIndex === startIndex) {
+            if (writeIndex === readIndex) {
                 isFull = true;
             }
         },
         Pop() {
             let item;
 
-            if (startIndex === endIndex && !isFull) {
+            if (readIndex === writeIndex && !isFull) {
                 throw new Error('Attempted to pop an empty buffer');
             }
 
-            item = buffer[startIndex];
-            buffer[startIndex++] = undefined;
+            item = buffer[readIndex];
+            buffer[readIndex++] = undefined;
 
             if (isFull) {
                 isFull = false;
             }
 
-            if (startIndex === maxSize) {
-                startIndex = 0;
+            if (readIndex === maxSize) {
+                readIndex = 0;
             }
 
             return item;
@@ -55,16 +55,16 @@ function circularBuffer(maxSize) {
                 return maxSize;
             }
 
-            if (startIndex <= endIndex) {
-                normalisedEnd = endIndex;
+            if (readIndex <= writeIndex) {
+                normalisedEnd = writeIndex;
             } else {
-                normalisedEnd = endIndex + maxSize;
+                normalisedEnd = writeIndex + maxSize;
             }
 
-            return normalisedEnd - startIndex;
+            return normalisedEnd - readIndex;
         },
         Peek() {
-            return buffer[startIndex];
+            return buffer[readIndex];
         },
         Contains(item) {
             return buffer.includes(item);
