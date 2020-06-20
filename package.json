@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Data structure implementations in JS",
   "scripts": {
-    "test": "node tests.js"
+    "test": "node tests/**"
   },
   "author": "Mark Dinh",
   "license": "MIT",
