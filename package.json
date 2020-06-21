@@ -1,9 +1,13 @@
 {
   "name": "datastructures",
   "version": "1.0.0",
-  "description": "Data structure implementations in JS",
+  "description": "Data structure implementations written in JS",
   "scripts": {
     "test": "node tests/**"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/schdooz/datastructures.js"
   },
   "author": "Mark Dinh",
   "license": "MIT",
