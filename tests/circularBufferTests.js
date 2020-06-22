@@ -1,5 +1,5 @@
 var test = require('tape');
-var circularBuffer = require('../circularBuffer/circularBuffer.js');
+var circularBuffer = require('../circularBuffer.js');
 
 test('items are ejected correctly on push', t => {
     let buffer = circularBuffer(3);
