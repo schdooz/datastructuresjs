@@ -6,8 +6,8 @@
     "test": "node tests/**"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/schdooz/datastructures.js"
+    "type": "git",
+    "url": "https://github.com/schdooz/datastructuresjs"
   },
   "author": "Mark Dinh",
   "license": "MIT",
